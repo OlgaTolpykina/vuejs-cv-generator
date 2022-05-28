@@ -1,87 +1,70 @@
-<script setup>
-import HelloWorld from "./components/HelloWorld.vue";
-import TheWelcome from "./components/TheWelcome.vue";
-</script>
-
 <template>
-  <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="./assets/logo.svg"
-      width="125"
-      height="125"
-    />
+  <div class="container column">
+    <resume-form></resume-form>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+    <div class="card card-w70">
+      <h1>Резюме Nickname</h1>
+      <div class="avatar">
+        <img
+          src="https://cdn.dribbble.com/users/5592443/screenshots/14279501/drbl_pop_r_m_rick_4x.png"
+        />
+      </div>
+      <h2>Опыт работы</h2>
+      <p>
+        главный герой американского мультсериала «Рик и Морти», гениальный
+        учёный, изобретатель, атеист (хотя в некоторых сериях он даже молится
+        Богу, однако, каждый раз после чудесного спасения ссылается на удачу и
+        вновь отвергает его существование), алкоголик, социопат, дедушка Морти.
+        На момент начала третьего сезона ему 70 лет[1]. Рик боится пиратов, а
+        его главной слабостью является некий - "Санчезиум". Исходя из того, что
+        существует неограниченное количество вселенных, существует
+        неограниченное количество Риков, герой сериала предположительно
+        принадлежит к измерению С-137. В серии комикcов Рик относится к
+        измерению C-132, а в игре «Pocket Mortys» — к измерению C-123[2].
+        Прототипом Рика Санчеза является Эмметт Браун, герой кинотрилогии «Назад
+        в будущее»[3].
+      </p>
+      <h3>Добавьте первый блок, чтобы увидеть результат</h3>
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  </div>
+  <div class="container">
+    <p>
+      <button class="btn primary">Загрузить комментарии</button>
+    </p>
+    <div class="card">
+      <h2>Комментарии</h2>
+      <ul class="list">
+        <li class="list-item">
+          <div>
+            <p><strong>test@microsoft.com</strong></p>
+            <small
+              >Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Eligendi, reiciendis.</small
+            >
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="loader"></div>
+  </div>
 </template>
 
+<script>
+import ResumeForm from "./components/ResumeForm.vue";
+export default {
+  components: { ResumeForm },
+};
+</script>
+
 <style>
-@import "./assets/base.css";
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-
-  font-weight: normal;
+.avatar {
+  display: flex;
+  justify-content: center;
 }
 
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
-
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+.avatar img {
+  width: 150px;
+  height: auto;
+  border-radius: 50%;
 }
 </style>
