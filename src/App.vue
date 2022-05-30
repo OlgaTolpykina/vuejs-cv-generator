@@ -31,12 +31,12 @@ export default {
       this.blocks.push(block);
     },
     async loadComments() {
-      this.loading = true;
+      this.isLoading = true;
       const res = await fetch(
         "https://jsonplaceholder.typicode.com/comments?_limit=42"
       );
       this.comments = await res.json();
-      this.loading = false;
+      this.isLoading = false;
     },
   },
   components: { ResumeForm, ResumeContent, AppLoader, ResumeComments },
