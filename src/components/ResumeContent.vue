@@ -1,10 +1,14 @@
 <template>
   <div class="card card-w70">
-    <resume-title></resume-title>
-    <resume-avatar></resume-avatar>
-    <resume-subtitle></resume-subtitle>
-    <resume-text></resume-text>
-    <h3>Добавьте первый блок, чтобы увидеть результат</h3>
+    <template v-if="blocks.length">
+      <component
+        v-for="block in blocks"
+        :key="block.id"
+        :is="'resume-' + block.type"
+        v-bind="{ value: block.value }"
+      ></component>
+    </template>
+    <h3 v-else>Добавьте первый блок, чтобы увидеть результат</h3>
   </div>
 </template>
 
@@ -14,6 +18,7 @@ import ResumeAvatar from "./parts/ResumeAvatar.vue";
 import ResumeSubtitle from "./parts/ResumeSubtitle.vue";
 import ResumeText from "./parts/ResumeText.vue";
 export default {
+  props: ["blocks"],
   components: { ResumeTitle, ResumeAvatar, ResumeSubtitle, ResumeText },
 };
 </script>

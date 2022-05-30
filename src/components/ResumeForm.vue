@@ -21,6 +21,7 @@
 
 <script>
 export default {
+  emits: ["add-block"],
   data() {
     return {
       value: "",
@@ -34,10 +35,11 @@ export default {
   },
   methods: {
     submitForm() {
-      console.group("FormData");
-      console.log("value", this.value);
-      console.log("value", this.type);
-      console.groupEnd();
+      this.$emit("add-block", {
+        type: this.type,
+        value: this.value,
+        id: Date.now(),
+      });
       this.value = "";
     },
   },

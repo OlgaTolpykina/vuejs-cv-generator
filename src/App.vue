@@ -1,11 +1,15 @@
 <template>
   <div class="container column">
-    <resume-form></resume-form>
-    <resume-content></resume-content>
+    <resume-form @add-block="addBlock"></resume-form>
+    <resume-content :blocks="blocks"></resume-content>
   </div>
   <div class="container">
-    <resume-comments></resume-comments>
-    <app-loader></app-loader>
+    <app-loader v-if="isLoading"></app-loader>
+    <resume-comments
+      v-else
+      :comments="comments"
+      @load-comments="loadComments"
+    ></resume-comments>
   </div>
 </template>
 
@@ -15,16 +19,22 @@ import ResumeContent from "./components/ResumeContent.vue";
 import AppLoader from "./components/AppLoader.vue";
 import ResumeComments from "./components/ResumeComments.vue";
 export default {
-  components: { ResumeForm, ResumeContent, AppLoader, ResumeComments },
+  data() {
+    return {
+      isLoading: false,
+      comments: [],
+      blocks: [],
+    };
+  },
   methods: {
-    submitForm() {
-      console.group("FormData");
-      console.log("value", this.value);
-      console.log("value", this.type);
-      console.groupEnd();
-      this.value = "";
+    addBlock(block) {
+      this.blocks.push(block);
+    },
+    loadComments() {
+      console.log("load comments");
     },
   },
+  components: { ResumeForm, ResumeContent, AppLoader, ResumeComments },
 };
 </script>
 
