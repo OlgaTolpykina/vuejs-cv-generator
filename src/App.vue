@@ -30,8 +30,13 @@ export default {
     addBlock(block) {
       this.blocks.push(block);
     },
-    loadComments() {
-      console.log("load comments");
+    async loadComments() {
+      this.loading = true;
+      const res = await fetch(
+        "https://jsonplaceholder.typicode.com/comments?_limit=42"
+      );
+      this.comments = await res.json();
+      this.loading = false;
     },
   },
   components: { ResumeForm, ResumeContent, AppLoader, ResumeComments },

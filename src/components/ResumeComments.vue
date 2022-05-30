@@ -5,7 +5,7 @@
       <li class="list-item" v-for="comment in comments" :key="comment.id">
         <div>
           <p>
-            <strong>{{ comments.email }}</strong>
+            <strong>{{ comment.email }}</strong>
           </p>
           <small>{{ comment.body }}</small>
         </div>
